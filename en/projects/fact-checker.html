@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fact Checker · Marco Serra</title>
+<meta name="description" content="A 3D serious game about spotting fake news, made by a team of two across several university courses. The player is a journalist: over five days they read incoming news, check it on the computer and use a stamp to publish or reject it.">
+<meta property="og:title" content="Fact Checker · Marco Serra">
+<meta property="og:description" content="A 3D serious game about spotting fake news, made by a team of two across several university courses. The player is a journalist: over five days they read incoming news, check it on the computer and use a stamp to publish or reject it.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://serramarco1.github.io/portfolio/media/fc-ufficio.jpg">
+<meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="it" href="../../progetti/fact-checker.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230B5E5A%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2242%22%20font-family%3D%22Segoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EMS%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="../../stile.css">
+</head>
+<body>
+<a class="skip" href="#contenuto">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="../../en/index.html">Marco Serra</a>
+    <nav aria-label="Main">
+      <a href="../../en/index.html#progetti">Projects</a>
+      <a href="../../en/index.html#contatti">Contact</a>
+      <a href="../../cv/CV_Serra_Marco_EN.pdf">CV</a>
+      <a class="lang" href="../../progetti/fact-checker.html" hreflang="it" lang="it" aria-label="Italiano">IT</a>
+    </nav>
+  </div>
+</header>
+<main id="contenuto">
+<article class="project">
+<div class="wrap">
+  <a class="back" href="../../en/index.html#progetti"><span aria-hidden="true">←</span> All projects</a>
+  <header class="p-head">
+    <p class="kicker">Serious game · team of 2 · 2025–2026</p>
+    <h1>Fact Checker</h1>
+    <p class="lead">A 3D serious game about spotting fake news, made by a team of two across several university courses. The player is a journalist: over five days they read incoming news, check it on the computer and use a stamp to publish or reject it.</p>
+    <ul class="tags"><li>Unity</li><li>C#</li><li>Blender</li><li>Mixamo</li></ul>
+  </header>
+  <figure class="hero-media"><img src="../../media/fc-ufficio.jpg" alt="The office desk with the computer, the lamp and the fishbowl" width="1400" height="900" decoding="async"><figcaption>The journalist's office. I modelled several of the low-poly assets in this scene in Blender.</figcaption></figure>
+  <dl class="facts"><div><dt>Role</dt><dd>News system, the journalist's core gameplay, cutscenes, 3D assets</dd></div><div><dt>Team</dt><dd>2 people</dd></div><div><dt>Period</dt><dd>October 2025–February 2026</dd></div><div><dt>Tools</dt><dd>Unity, C#, Blender, Mixamo</dd></div></dl>
+  
+  <section class="sec sec-text"><h2>The game</h2><p>Each day brings a pile of news. The player reads it, checks author, source and video on the computer and stamps it: green to publish, red to reject. When rejecting, they must say what is wrong: clickbait headline, inaccurate facts, opinion presented as fact, hidden advertising, old news, unreliable source, edited image or video.</p><p>At the end of the day they see their score and can review the items they got wrong.</p></section>
+<section class="sec sec-text"><h2>What I did</h2><ul class="bullets"><li>I designed and wrote the news system: a data structure configured from the Unity editor, with every field needed to build a true or fake news item.</li><li>I proposed the gameplay and drew most of the user flows.</li><li>I made the cutscenes, with animation and dialogue, and the journalist's core gameplay.</li><li>I modelled some of the office's low-poly assets in Blender and animated the colleague with Mixamo.</li></ul></section>
+<section class="sec"><h2>How the news system works</h2><p class="sec-intro">Each news item is an asset: content writers create it from a Unity menu and fill in the fields in the Inspector, without touching code. The original assets are never changed during play.</p><div class="flow"><div class="flow-node"><strong>NotiziaData</strong><span>Project asset: text, author, source, image, video and solution</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">start of day</span></div><div class="flow-node"><strong>NotiziaRuntime</strong><span>Playable copy created at the start of the day: stamp and chosen errors</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">player's stamp</span></div><div class="flow-node"><strong>Scoring</strong><span>Compares the player's choices with the solution stored in the item</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">summary</span></div><div class="flow-node"><strong>End of day</strong><span>Summary, review of mistakes and, on the last day, the final cutscene</span></div></div></section>
+<section class="sec"><h2>Code</h2><div class="code-item"><h3>A news item as an asset</h3><p>With [CreateAssetMenu] every news item becomes a project file. The solution lives inside the item: whether it should be published and, if fake, which errors it contains. The possible errors are an enum, so the stamp interface and the scoring use the same values. (Identifiers are in Italian: notizia means news item.)</p><figure class="code"><figcaption>NotiziaData.cs · ErrorType.cs</figcaption><pre tabindex="0"><code>[<span class="a">CreateAssetMenu</span>(fileName = <span class="s">&quot;Notizia_&quot;</span>, menuName = <span class="s">&quot;Gioco/Notizia Data&quot;</span>)]
+<span class="k">public</span> <span class="k">class</span> <span class="t">NotiziaData</span> : <span class="t">ScriptableObject</span>
+{
+    [<span class="a">Header</span>(<span class="s">&quot;Contenuto Testuale&quot;</span>)]
+    <span class="k">public</span> <span class="k">string</span> titolo;
+    [<span class="a">TextArea</span>(<span class="n">3</span>, <span class="n">5</span>)] <span class="k">public</span> <span class="k">string</span> sottotitolo;
+    [<span class="a">TextArea</span>(<span class="n">10</span>, <span class="n">20</span>)] <span class="k">public</span> <span class="k">string</span> corpo;
+    <span class="k">public</span> <span class="k">string</span> autore;
+    <span class="k">public</span> <span class="k">string</span> fonte;
+    <span class="k">public</span> <span class="k">string</span> dataNotizia;
+
+    [<span class="a">Header</span>(<span class="s">&quot;Contenuti Multimediali&quot;</span>)]
+    <span class="k">public</span> <span class="t">Texture2D</span> immagineAllegata;
+    <span class="k">public</span> <span class="k">string</span> linkVideo;
+
+    [<span class="a">Header</span>(<span class="s">&quot;Verifica e Soluzione&quot;</span>)]
+    <span class="k">public</span> <span class="k">bool</span> isPublishable;
+    <span class="k">public</span> <span class="t">List</span>&lt;<span class="t">ErrorType</span>&gt; erroriPresenti;
+}
+
+<span class="k">public</span> <span class="k">enum</span> <span class="t">ErrorType</span>
+{
+    NONE,
+    CLICKBAIT,        <span class="c">// titolo sensazionalistico</span>
+    INACCURATE_FACT,  <span class="c">// fatti inventati o inesatti</span>
+    BIAS_OPINION,     <span class="c">// opinione spacciata per fatto</span>
+    ADVERTISING,      <span class="c">// pubblicità occulta</span>
+    BAD_DATE,         <span class="c">// notizia vecchia riproposta come nuova</span>
+    BAD_SOURCE,       <span class="c">// fonte inaffidabile o inesistente</span>
+    BAD_IMAGE,        <span class="c">// immagine ritoccata o fuori contesto</span>
+    BAD_VIDEO,        <span class="c">// video manipolato o non pertinente</span>
+}</code></pre></figure></div>
+<div class="code-item"><h3>Data kept apart from the player's choices</h3><p>NotiziaRuntime wraps the asset and holds only the game state. At the end of the day scoring gives +1 for each right decision, +1 for each error spotted in a fake item and −1 for each wrong decision. Wrong items go into the review.</p><figure class="code"><figcaption>NotiziaRuntime.cs · GameManager.cs</figcaption><pre tabindex="0"><code><span class="k">public</span> <span class="k">class</span> <span class="t">NotiziaRuntime</span>
+{
+    <span class="k">public</span> <span class="t">NotiziaData</span> data;              <span class="c">// l'asset originale, in sola lettura</span>
+    <span class="k">public</span> <span class="t">PlayerDecision</span> decision;       <span class="c">// UNRATED, APPROVED o REJECTED</span>
+    <span class="k">public</span> <span class="t">List</span>&lt;<span class="t">ErrorType</span>&gt; selectedErrors;
+
+    <span class="k">public</span> <span class="f">NotiziaRuntime</span>(<span class="t">NotiziaData</span> asset)
+    {
+        data = asset;
+        decision = <span class="t">PlayerDecision</span>.UNRATED;
+        selectedErrors = <span class="k">new</span> <span class="t">List</span>&lt;<span class="t">ErrorType</span>&gt;();
+    }
+}
+
+<span class="c">// GameManager, a fine giornata</span>
+<span class="k">foreach</span> (<span class="t">NotiziaRuntime</span> notizia <span class="k">in</span> runtimeCodaNotizie)
+{
+    <span class="k">bool</span> approved = (notizia.decision == <span class="t">PlayerDecision</span>.APPROVED);
+    <span class="k">bool</span> correct = (approved == notizia.data.isPublishable);
+
+    <span class="k">if</span> (correct)
+    {
+        dayScoreCalc += <span class="n">1</span>;
+        correctNewsCount++;
+        <span class="k">if</span> (!notizia.data.isPublishable)
+        {
+            <span class="k">var</span> erroriIndovinati = notizia.selectedErrors.<span class="f">Intersect</span>(notizia.data.erroriPresenti);
+            dayScoreCalc += erroriIndovinati.<span class="f">Count</span>();
+        }
+    }
+    <span class="k">else</span>
+    {
+        dayScoreCalc -= <span class="n">1</span>;
+        wrongNewsCount++;
+        erroriCommessi.<span class="f">Add</span>(notizia.data);
+    }
+}</code></pre></figure></div><p class="aside">Simplified excerpts: I removed the logging lines and shortened some comments. I am happy to walk through the full project in an interview.</p></section>
+<section class="sec"><h2>Gallery</h2><div class="gallery"><figure><a href="../../media/fc-inspector.jpg" title="Open the full-size image"><img src="../../media/fc-inspector.jpg" alt="The GameManager Inspector with news lists per day and the databases" width="1200" height="900" loading="lazy" decoding="async"></a><figcaption>In the GameManager Inspector you assign each day's news and the author, source and video databases.</figcaption></figure>
+<figure><a href="../../media/fc-collega.jpg" title="Open the full-size image"><img src="../../media/fc-collega.jpg" alt="The colleague in the scene and the NavMesh agent settings" width="1400" height="900" loading="lazy" decoding="async"></a><figcaption>The colleague in the scene, with the NavMesh agent settings.</figcaption></figure></div></section>
+  <nav class="next" aria-label="Next project">
+    <a href="../../en/projects/gift-among-memories.html"><span class="next-label">Next project</span><span class="next-title">Gift Among Memories <span aria-hidden="true">→</span></span></a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© 2026 Marco Serra</span>
+    <a href="mailto:marco.serra2004@gmail.com">marco.serra2004@gmail.com</a>
+    <span>No cookies, no tracking.</span>
+  </div>
+</footer>
+<script src="../../script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashen Sea · Marco Serra</title>
+<meta name="description" content="A souls-like action adventure in Unreal Engine 5.6, made by a team of three for the Advanced Video Game Programming exam. The demo is a 10–20 minute vertical slice. I was responsible for the enemies: movement, animation and AI.">
+<meta property="og:title" content="Ashen Sea · Marco Serra">
+<meta property="og:description" content="A souls-like action adventure in Unreal Engine 5.6, made by a team of three for the Advanced Video Game Programming exam. The demo is a 10–20 minute vertical slice. I was responsible for the enemies: movement, animation and AI.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://serramarco1.github.io/portfolio/media/ashen-cover.jpg">
+<meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="it" href="../../progetti/ashen-sea.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230B5E5A%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2242%22%20font-family%3D%22Segoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EMS%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="../../stile.css">
+</head>
+<body>
+<a class="skip" href="#contenuto">Skip to content</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="../../en/index.html">Marco Serra</a>
+    <nav aria-label="Main">
+      <a href="../../en/index.html#progetti">Projects</a>
+      <a href="../../en/index.html#contatti">Contact</a>
+      <a href="../../cv/CV_Serra_Marco_EN.pdf">CV</a>
+      <a class="lang" href="../../progetti/ashen-sea.html" hreflang="it" lang="it" aria-label="Italiano">IT</a>
+    </nav>
+  </div>
+</header>
+<main id="contenuto">
+<article class="project">
+<div class="wrap">
+  <a class="back" href="../../en/index.html#progetti"><span aria-hidden="true">←</span> All projects</a>
+  <header class="p-head">
+    <p class="kicker">University project · team of 3 · 2026</p>
+    <h1>Ashen Sea</h1>
+    <p class="lead">A souls-like action adventure in Unreal Engine 5.6, made by a team of three for the Advanced Video Game Programming exam. The demo is a 10–20 minute vertical slice. I was responsible for the enemies: movement, animation and AI.</p>
+    <ul class="tags"><li>Unreal Engine 5</li><li>Blueprint</li><li>Control Rig</li><li>Behavior Tree</li></ul>
+  </header>
+  <figure class="hero-media"><video controls preload="metadata" playsinline width="1368" height="770" poster="../../media/ashen-cover.jpg"><source src="../../media/ashen-trailer.mp4" type="video/mp4">Your browser cannot play this video.</video><figcaption>The demo trailer, edited by the team. For the spider in the fight I built the movement, animation and AI.</figcaption></figure>
+  <dl class="facts"><div><dt>Role</dt><dd>Enemies and AI in Blueprints. The enemy 3D models come from Fab and Sketchfab</dd></div><div><dt>Team</dt><dd>3 people: player character and combat, level design and UI, enemies and AI (me)</dd></div><div><dt>Period</dt><dd>March–May 2026</dd></div><div><dt>Tools</dt><dd>Unreal Engine 5.6, Blueprints, Control Rig, Behavior Tree, AI Perception, Geometry Collection</dd></div></dl>
+  
+  <section class="sec"><h2>The spider: a procedural walk</h2><div class="feats"><article class="feat">
+  <div class="feat-media"><video class="loop" muted loop playsinline preload="none" width="960" height="540" poster="../../media/ashen-ragno.jpg" aria-label="The glowing spider moves towards the hero in the fog"><source src="../../media/ashen-ragno.mp4" type="video/mp4"></video></div>
+  <div class="feat-text"><h3>Legs that really touch the ground</h3><p>The spider has no walk animations. A Control Rig computes the next foothold for each leg, interpolates the position halfway through the step to avoid snapping and applies IK: legs never go through objects, even on uneven ground, and the body bobs like a real animal's.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><img src="../../media/ashen-arena.jpg" alt="Test arena with green obstacles, ramps and several spiders" width="1400" height="900" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>An arena to test it</h3><p>I tested walking and navigation in an arena with obstacles, ramps and height changes before bringing the spider into the game map.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><img src="../../media/ashen-behavior-tree.jpg" alt="The spider's Behavior Tree with Selector, Move To, the web task and Wait" width="1800" height="972" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>Behaviour in a Behavior Tree</h3><p>AI Perception tells the spider whether it can see the player. If it can, it moves closer; within range it stops, shoots a web, waits 2 seconds and starts again if the player is still visible.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><video class="loop" muted loop playsinline preload="none" width="960" height="540" poster="../../media/ashen-cenere.jpg" aria-label="The defeated spider on the ground dissolves into ash"><source src="../../media/ashen-cenere.mp4" type="video/mp4"></video></div>
+  <div class="feat-text"><h3>Death and ash</h3><p>A defeated enemy stays on the ground until the player collects its ash into the hourglass, and the body dissolves during collection. I built the collection logic; the ash dissolve material itself isn't my work.</p></div>
+</article></div></section>
+<section class="sec"><h2>The golem: the demo's boss</h2><div class="feats"><article class="feat">
+  <div class="feat-media"><img src="../../media/ashen-golem-stati.jpg" alt="The golem's Animation Blueprint state machine with Idle, Walk and Died" width="800" height="528" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>Animation and states</h3><p>The golem uses Mixamo animations driven by an Animation Blueprint: a state machine with Idle, Walk and Died, and a Blend Space for a seamless change from standing to walking. Death uses ragdoll physics instead of an animation.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><img src="../../media/ashen-masso.jpg" alt="The boulder Blueprint: on begin play it applies an impulse to the Geometry Collection" width="818" height="504" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>Punch or boulder</h3><p>Every 4 seconds the golem checks its distance to the player: if close enough it throws a punch, left or right at random, otherwise it creates a boulder between its hands and throws it. On impact the boulder is replaced by a Geometry Collection and shatters. The golem roars the first time it engages.</p></div>
+</article></div></section>
+<section class="sec"><h2>The spider's logic</h2><p class="sec-intro">The Behavior Tree loop, with the attack range set in the AI Perception component.</p><div class="flow"><div class="flow-node"><strong>Sees the player?</strong><span>AI Perception updates the Blackboard</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">yes</span></div><div class="flow-node"><strong>Move To</strong><span>Moves closer until within range</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">within range</span></div><div class="flow-node"><strong>Web</strong><span>Stops and spawns the projectile</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">after the shot</span></div><div class="flow-node"><strong>Wait 2 s</strong><span>If the player is still visible, the loop starts again</span></div></div></section>
+<section class="sec sec-text"><h2>Challenges and what I learned</h2><ul class="bullets"><li>Mixamo animations lack the Root bone Unreal expects: no root motion, and retargeting between different skeletons was not possible. I handled the golem's movement in Blueprints.</li><li>Large Blueprints are hard to read. In the spider's Control Rig I split the logic into functions: speed, new foothold, step midpoint, walk timing.</li><li>I learned Unreal from scratch during the project: I can now work with Behavior Trees, Control Rig and Animation Blueprints.</li></ul><p class="aside">Ashen Sea is built entirely in Blueprints, so I show the graphs instead of code. I can open the project during an interview.</p></section>
+<section class="sec"><h2>Gallery</h2><div class="gallery"><figure><a href="../../media/ashen-control-rig.jpg" title="Open the full-size image"><img src="../../media/ashen-control-rig.jpg" alt="The full graph of the spider's Control Rig" width="2048" height="984" loading="lazy" decoding="async"></a><figcaption>The Control Rig that drives the spider's walk and calls the per-step functions.</figcaption></figure>
+<figure><a href="../../media/ashen-ragno-modello.jpg" title="Open the full-size image"><img src="../../media/ashen-ragno-modello.jpg" alt="The black spider model in the test arena" width="1400" height="900" loading="lazy" decoding="async"></a><figcaption>The spider in the test arena.</figcaption></figure></div></section>
+  <nav class="next" aria-label="Next project">
+    <a href="../../en/projects/fact-checker.html"><span class="next-label">Next project</span><span class="next-title">Fact Checker <span aria-hidden="true">→</span></span></a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© 2026 Marco Serra</span>
+    <a href="mailto:marco.serra2004@gmail.com">marco.serra2004@gmail.com</a>
+    <span>No cookies, no tracking.</span>
+  </div>
+</footer>
+<script src="../../script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashen Sea · Marco Serra</title>
+<meta name="description" content="Un action adventure souls-like in Unreal Engine 5.6, sviluppato in tre per l'esame di Programmazione Avanzata di Videogame. La demo è una vertical slice di 10–20 minuti. Io mi sono occupato dei nemici: movimento, animazioni e intelligenza artificiale.">
+<meta property="og:title" content="Ashen Sea · Marco Serra">
+<meta property="og:description" content="Un action adventure souls-like in Unreal Engine 5.6, sviluppato in tre per l'esame di Programmazione Avanzata di Videogame. La demo è una vertical slice di 10–20 minuti. Io mi sono occupato dei nemici: movimento, animazioni e intelligenza artificiale.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://serramarco1.github.io/portfolio/media/ashen-cover.jpg">
+<meta name="color-scheme" content="light dark">
+<link rel="alternate" hreflang="en" href="../en/projects/ashen-sea.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%230B5E5A%22%2F%3E%3Ctext%20x%3D%2232%22%20y%3D%2242%22%20font-family%3D%22Segoe%20UI%2CArial%2Csans-serif%22%20font-size%3D%2228%22%20font-weight%3D%22700%22%20fill%3D%22%23fff%22%20text-anchor%3D%22middle%22%3EMS%3C%2Ftext%3E%3C%2Fsvg%3E">
+<link rel="stylesheet" href="../stile.css">
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="../index.html">Marco Serra</a>
+    <nav aria-label="Principale">
+      <a href="../index.html#progetti">Progetti</a>
+      <a href="../index.html#contatti">Contatti</a>
+      <a href="../cv/CV_Serra_Marco_IT.pdf">CV</a>
+      <a class="lang" href="../en/projects/ashen-sea.html" hreflang="en" lang="en" aria-label="English">EN</a>
+    </nav>
+  </div>
+</header>
+<main id="contenuto">
+<article class="project">
+<div class="wrap">
+  <a class="back" href="../index.html#progetti"><span aria-hidden="true">←</span> Tutti i progetti</a>
+  <header class="p-head">
+    <p class="kicker">Progetto d'esame · team di 3 · 2026</p>
+    <h1>Ashen Sea</h1>
+    <p class="lead">Un action adventure souls-like in Unreal Engine 5.6, sviluppato in tre per l'esame di Programmazione Avanzata di Videogame. La demo è una vertical slice di 10–20 minuti. Io mi sono occupato dei nemici: movimento, animazioni e intelligenza artificiale.</p>
+    <ul class="tags"><li>Unreal Engine 5</li><li>Blueprint</li><li>Control Rig</li><li>Behavior Tree</li></ul>
+  </header>
+  <figure class="hero-media"><video controls preload="metadata" playsinline width="1368" height="770" poster="../media/ashen-cover.jpg"><source src="../media/ashen-trailer.mp4" type="video/mp4">Il tuo browser non riproduce questo video.</video><figcaption>Il trailer della demo, montato dal team. Del ragno che si vede nel combattimento ho curato movimento, animazione e AI.</figcaption></figure>
+  <dl class="facts"><div><dt>Ruolo</dt><dd>Nemici e AI in Blueprint. I modelli 3D dei nemici vengono da Fab e Sketchfab</dd></div><div><dt>Team</dt><dd>3 persone: protagonista e combattimento, level design e UI, nemici e AI (io)</dd></div><div><dt>Periodo</dt><dd>Marzo–maggio 2026</dd></div><div><dt>Strumenti</dt><dd>Unreal Engine 5.6, Blueprint, Control Rig, Behavior Tree, AI Perception, Geometry Collection</dd></div></dl>
+  
+  <section class="sec"><h2>Il ragno: una camminata procedurale</h2><div class="feats"><article class="feat">
+  <div class="feat-media"><video class="loop" muted loop playsinline preload="none" width="960" height="540" poster="../media/ashen-ragno.jpg" aria-label="Il ragno incandescente avanza verso il protagonista nella nebbia"><source src="../media/ashen-ragno.mp4" type="video/mp4"></video></div>
+  <div class="feat-text"><h3>Zampe che si appoggiano davvero</h3><p>Il ragno non usa animazioni di camminata. Un Control Rig calcola per ogni zampa il prossimo punto d'appoggio, interpola la posizione a metà passo per evitare scatti e applica una IK: le zampe non compenetrano gli oggetti anche su terreno irregolare e il corpo oscilla come quello di un animale vero.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><img src="../media/ashen-arena.jpg" alt="Arena di prova con ostacoli verdi, rampe e diversi ragni" width="1400" height="900" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>Un'arena per provarlo</h3><p>Ho provato camminata e navigazione in un'arena con ostacoli, rampe e dislivelli, prima di portare il ragno nella mappa del gioco.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><img src="../media/ashen-behavior-tree.jpg" alt="Il Behavior Tree del ragno con Selector, Move To, il task della ragnatela e Wait" width="1800" height="972" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>Il comportamento in un Behavior Tree</h3><p>Con AI Perception il ragno capisce se vede il giocatore. Se lo vede si avvicina; a distanza di tiro si ferma, lancia la ragnatela, aspetta 2 secondi e, se il giocatore è ancora visibile, ricomincia.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><video class="loop" muted loop playsinline preload="none" width="960" height="540" poster="../media/ashen-cenere.jpg" aria-label="Il ragno sconfitto a terra si dissolve in cenere"><source src="../media/ashen-cenere.mp4" type="video/mp4"></video></div>
+  <div class="feat-text"><h3>Morte e cenere</h3><p>Il nemico sconfitto resta a terra finché il giocatore non raccoglie la sua cenere nella clessidra, e durante la raccolta il corpo si dissolve. Ho curato la logica della raccolta; il materiale con l'effetto cenere non è opera mia.</p></div>
+</article></div></section>
+<section class="sec"><h2>Il golem: il boss della demo</h2><div class="feats"><article class="feat">
+  <div class="feat-media"><img src="../media/ashen-golem-stati.jpg" alt="State machine dell'Animation Blueprint del golem con gli stati Idle, Walk e Died" width="800" height="528" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>Animazioni e stati</h3><p>Il golem usa animazioni di Mixamo, gestite da un Animation Blueprint: una state machine con Idle, Walk e Died e un Blend Space per passare dalla posa ferma alla camminata senza stacchi. Per la morte uso la fisica ragdoll al posto di un'animazione.</p></div>
+</article>
+<article class="feat">
+  <div class="feat-media"><img src="../media/ashen-masso.jpg" alt="Blueprint del masso: all'avvio applica un impulso alla Geometry Collection" width="818" height="504" loading="lazy" decoding="async"></div>
+  <div class="feat-text"><h3>Pugno o masso</h3><p>Ogni 4 secondi il golem controlla la distanza dal giocatore: se è abbastanza vicino tira un pugno, destro o sinistro a caso, altrimenti genera un masso tra le mani e lo lancia. All'impatto il masso viene sostituito da una Geometry Collection e si frantuma. Al primo ingaggio il golem ruggisce.</p></div>
+</article></div></section>
+<section class="sec"><h2>La logica del ragno</h2><p class="sec-intro">Il ciclo del Behavior Tree, con la distanza di tiro impostata nel componente AI Perception.</p><div class="flow"><div class="flow-node"><strong>Vede il giocatore?</strong><span>AI Perception aggiorna il Blackboard</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">sì</span></div><div class="flow-node"><strong>Move To</strong><span>Si avvicina finché non è a distanza di tiro</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">a distanza di tiro</span></div><div class="flow-node"><strong>Ragnatela</strong><span>Si ferma e genera il colpo</span></div><div class="flow-link"><span class="arrow" aria-hidden="true"></span><span class="flow-label">dopo il lancio</span></div><div class="flow-node"><strong>Wait 2 s</strong><span>Se vede ancora il giocatore, il ciclo riparte</span></div></div></section>
+<section class="sec sec-text"><h2>Difficoltà e cosa ho imparato</h2><ul class="bullets"><li>Le animazioni di Mixamo non hanno l'osso Root che Unreal richiede: niente root motion, e il retargeting tra scheletri diversi non era possibile. Il movimento del golem l'ho gestito nei Blueprint.</li><li>I Blueprint grandi sono difficili da leggere. Nel Control Rig del ragno ho diviso la logica in funzioni: velocità, nuovo punto d'appoggio, punto medio del passo, tempi della camminata.</li><li>Ho imparato Unreal da zero durante il progetto: oggi so lavorare con Behavior Tree, Control Rig e Animation Blueprint.</li></ul><p class="aside">Ashen Sea è fatto interamente in Blueprint, quindi al posto del codice mostro i grafi. A colloquio posso aprire il progetto.</p></section>
+<section class="sec"><h2>Galleria</h2><div class="gallery"><figure><a href="../media/ashen-control-rig.jpg" title="Apri l'immagine a grandezza piena"><img src="../media/ashen-control-rig.jpg" alt="Il grafo completo del Control Rig del ragno" width="2048" height="984" loading="lazy" decoding="async"></a><figcaption>Il Control Rig che gestisce la camminata del ragno e richiama le funzioni dei singoli passi.</figcaption></figure>
+<figure><a href="../media/ashen-ragno-modello.jpg" title="Apri l'immagine a grandezza piena"><img src="../media/ashen-ragno-modello.jpg" alt="Il modello del ragno nero nell'arena di prova" width="1400" height="900" loading="lazy" decoding="async"></a><figcaption>Il ragno nell'arena di prova.</figcaption></figure></div></section>
+  <nav class="next" aria-label="Progetto successivo">
+    <a href="../progetti/fact-checker.html"><span class="next-label">Progetto successivo</span><span class="next-title">Fact Checker <span aria-hidden="true">→</span></span></a>
+  </nav>
+</div>
+</article>
+</main>
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© 2026 Marco Serra</span>
+    <a href="mailto:marco.serra2004@gmail.com">marco.serra2004@gmail.com</a>
+    <span>Nessun cookie e nessun tracciamento.</span>
+  </div>
+</footer>
+<script src="../script.js" defer></script>
+</body>
+</html>
